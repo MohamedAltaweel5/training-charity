@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>رواد الكفاءات | تدريب وتصدير</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0B1D3A;
+      --navy-light: #132B52;
+      --teal: #1A5C6B;
+      --teal-light: #237A8C;
+      --gold: #C8973E;
+      --gold-light: #E2B867;
+      --cream: #F5F0E8;
+      --cream-dark: #E8DFD0;
+      --white: #FEFDFB;
+      --text-dark: #1A1A1A;
+      --text-muted: #5A5A5A;
+      --text-light: #8A8A8A;
+      --shadow-sm: 0 2px 8px rgba(11,29,58,0.06);
+      --shadow-md: 0 8px 30px rgba(11,29,58,0.1);
+      --shadow-lg: 0 20px 60px rgba(11,29,58,0.15);
+      --radius: 12px;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    body {
+      font-family: 'Noto Naskh Arabic', serif;
+      background: var(--white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+
+    h1, h2, h3, h4, h5, h6, .nav-link, .tab-btn {
+      font-family: 'Noto Kufi Arabic', sans-serif;
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1000;
+      background: rgba(254,253,251,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(11,29,58,0.06);
+      transition: var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(254,253,251,0.95);
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .logo-icon::before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+    .logo-text {
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+    .logo-text span {
+      color: var(--gold);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+      background: var(--cream);
+      padding: 4px;
+      border-radius: 40px;
+    }
+    .nav-link {
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .nav-link:hover {
+      color: var(--navy);
+      background: rgba(11,29,58,0.05);
+    }
+    .nav-link.active {
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: 0 4px 12px rgba(11,29,58,0.25);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2.5px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 40%, var(--teal) 100%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(200,151,62,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(26,92,107,0.2) 0%, transparent 50%);
+    }
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.5) 60px, rgba(255,255,255,0.5) 61px),
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.5) 60px, rgba(255,255,255,0.5) 61px);
+    }
+    .hero-geo {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border: 1px solid rgba(200,151,62,0.08);
+      border-radius: 50%;
+      left: -100px;
+      top: -100px;
+    }
+    .hero-geo2 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(200,151,62,0.06);
+      border-radius: 50%;
+      right: 10%;
+      bottom: 10%;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-content {}
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,151,62,0.15);
+      border: 1px solid rgba(200,151,62,0.25);
+      padding: 8px 18px;
+      border-radius: 30px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    .hero-badge span {
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 20px;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold-light);
+      position: relative;
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 2;
+      margin-bottom: 36px;
+      max-width: 520px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .btn {
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 14px 32px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy);
+      box-shadow: 0 8px 24px rgba(200,151,62,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(200,151,62,0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.25);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+    .hero-card-stack {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 16px;
+      transition: var(--transition);
+    }
+    .stat-card:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateX(-4px);
+    }
+    .stat-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .stat-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .stat-icon.gold { background: rgba(200,151,62,0.2); }
+    .stat-icon.teal { background: rgba(26,92,107,0.3); }
+    .stat-icon.white { background: rgba(255,255,255,0.12); }
+    .stat-num {
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--white);
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 2px;
+    }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      padding: 100px 24px;
+    }
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .section-tag::before,
+    .section-tag::after {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.9;
+    }
+
+    /* About */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-image {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--cream), var(--cream-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-image-inner {
+      width: 80%;
+      height: 80%;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-image-inner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 70%, rgba(200,151,62,0.15), transparent 50%);
+    }
+    .about-arabesque {
+      font-size: 6rem;
+      color: rgba(200,151,62,0.2);
+      z-index: 1;
+    }
+    .about-float-card {
+      position: absolute;
+      bottom: -10px;
+      left: -10px;
+      background: var(--white);
+      padding: 18px 24px;
+      border-radius: 14px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .about-float-num {
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+    .about-float-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .about-text h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 2;
+    }
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .value-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: var(--cream);
+      border-radius: 10px;
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .value-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Training */
+    #training { background: var(--cream); }
+    .training-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .training-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 36px 28px;
+      border: 1px solid rgba(11,29,58,0.04);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .training-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--teal));
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .training-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .training-card:hover::before { opacity: 1; }
+    .training-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 22px;
+    }
+    .training-icon.bg1 { background: rgba(200,151,62,0.12); }
+    .training-icon.bg2 { background: rgba(26,92,107,0.1); }
+    .training-icon.bg3 { background: rgba(11,29,58,0.08); }
+    .training-card h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .training-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+
+    /* Products */
+    #products { background: var(--white); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--cream);
+      border-radius: 18px;
+      padding: 36px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    .product-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+    .product-thumb {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+    .product-thumb.pt1 { background: linear-gradient(135deg, var(--navy), var(--teal)); }
+    .product-thumb.pt2 { background: linear-gradient(135deg, var(--gold), #D4A84E); }
+    .product-thumb.pt3 { background: linear-gradient(135deg, var(--teal), var(--teal-light)); }
+    .product-thumb.pt4 { background: linear-gradient(135deg, #3B2D1A, var(--gold)); }
+    .product-info h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .product-info p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .product-tag {
+      display: inline-block;
+      padding: 4px 14px;
+      background: var(--white);
+      border-radius: 20px;
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    /* Partners */
+    #partners { background: linear-gradient(160deg, var(--navy) 0%, var(--teal) 100%); }
+    #partners .section-tag { color: var(--gold-light); }
+    #partners .section-title { color: var(--white); }
+    #partners .section-subtitle { color: rgba(255,255,255,0.6); }
+    .partners-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .partner-logo {
+      width: 160px;
+      height: 80px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      transition: var(--transition);
+    }
+    .partner-logo:hover {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+      border-color: rgba(200,151,62,0.3);
+    }
+    .testimonial-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 32px;
+      transition: var(--transition);
+    }
+    .testimonial:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+    .testimonial p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .testimonial-avatar.a1 { background: rgba(200,151,62,0.25); color: var(--gold-light); }
+    .testimonial-avatar.a2 { background: rgba(35,122,140,0.3); color: var(--teal-light); }
+    .testimonial-avatar.a3 { background: rgba(255,255,255,0.12); color: var(--white); }
+    .testimonial-name {
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--white);
+    }
+    .testimonial-role {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* Contact */
+    #contact { background: var(--cream); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .contact-form {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid var(--cream-dark);
+      border-radius: 10px;
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      background: var(--cream);
+      transition: var(--transition);
+      outline: none;
+      direction: rtl;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      background: var(--white);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      color: var(--white);
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(11,29,58,0.3);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .contact-info-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .contact-info-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .contact-detail h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .contact-detail p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: var(--navy);
+      padding: 48px 24px 28px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-logo {
+      width: 36px;
+      height: 36px;
+      background: rgba(200,151,62,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-logo::after {
+      content: '';
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+    }
+    .footer-name {
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-weight: 700;
+      color: var(--white);
+      font-size: 0.95rem;
+    }
+    .footer-copy {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-links a {
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── MOBILE NAV OVERLAY ─── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(11,29,58,0.97);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+    .mobile-nav.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .mobile-nav .nav-link {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.7);
+      padding: 14px 32px;
+    }
+    .mobile-nav .nav-link:hover,
+    .mobile-nav .nav-link.active {
+      color: var(--gold-light);
+      background: rgba(200,151,62,0.1);
+    }
+    .mobile-close {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-desc { margin: 0 auto 36px; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-image { max-height: 320px; }
+      .training-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonial-cards { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-tabs { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+      .section { padding: 70px 20px; }
+      .training-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .testimonial-cards { grid-template-columns: 1fr; }
+      .about-values { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .partners-row { gap: 12px; }
+      .partner-logo { width: 130px; height: 64px; font-size: 0.7rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.7rem; }
+      .hero-badge span { font-size: 0.7rem; }
+      .btn { padding: 12px 24px; font-size: 0.82rem; }
+      .section-title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="logo">
+        <div class="logo-icon"></div>
+        <span class="logo-text">رواد <span>الكفاءات</span></span>
+      </a>
+      <ul class="nav-tabs" id="navTabs">
+        <li><a class="nav-link active" data-target="hero">الرئيسية</a></li>
+        <li><a class="nav-link" data-target="about">من نحن</a></li>
+        <li><a class="nav-link" data-target="training">التدريب</a></li>
+        <li><a class="nav-link" data-target="products">التصدير</a></li>
+        <li><a class="nav-link" data-target="partners">شركاؤنا</a></li>
+        <li><a class="nav-link" data-target="contact">تواصل معنا</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="القائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-close" id="mobileClose">&times;</button>
+    <a class="nav-link active" data-target="hero">الرئيسية</a>
+    <a class="nav-link" data-target="about">من نحن</a>
+    <a class="nav-link" data-target="training">التدريب</a>
+    <a class="nav-link" data-target="products">التصدير</a>
+    <a class="nav-link" data-target="partners">شركاؤنا</a>
+    <a class="nav-link" data-target="contact">تواصل معنا</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-pattern"></div>
+    <div class="hero-geo"></div>
+    <div class="hero-geo2"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          <span>نبني المستقبل بالكفاءة والتميّز</span>
+        </div>
+        <h1>تدريب الكفاءات<br/>و<em>تصدير المنتجات</em><br/>بمعايير عالمية</h1>
+        <p class="hero-desc">
+          مؤسسة رائدة في تطوير القدرات البشرية وتأهيلها لسوق العمل، إلى جانب تصدير منتجات عالية الجودة تعكس التميّز والإبداع العربي إلى الأسواق الدولية.
+        </p>
+        <div class="hero-actions">
+          <a href="#training" class="btn btn-primary">خدمات التدريب ←</a>
+          <a href="#products" class="btn btn-outline">منتجاتنا</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <div class="stat-card">
+            <div class="stat-row">
+              <div class="stat-icon gold">🎓</div>
+              <div>
+                <div class="stat-num">+٢,٥٠٠</div>
+                <div class="stat-label">متدرب تم تأهيلهم</div>
+              </div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-row">
+              <div class="stat-icon teal">🌍</div>
+              <div>
+                <div class="stat-num">+١٥</div>
+                <div class="stat-label">دولة نصدّر إليها</div>
+              </div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-row">
+              <div class="stat-icon white">⭐</div>
+              <div>
+                <div class="stat-num">٩٨٪</div>
+                <div class="stat-label">نسبة رضا العملاء</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <div class="about-image-inner">
+            <div class="about-arabesque">۞</div>
+          </div>
+          <div class="about-float-card">
+            <div class="about-float-num">+١٠</div>
+            <div class="about-float-label">سنوات من الخبرة<br/>والعطاء</div>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <div class="section-tag">
+            <span></span> من نحن <span></span>
+          </div>
+          <h3>مؤسسة تجمع بين<br/>التأهيل والتصدير</h3>
+          <p>
+            تأسست المنشأة على رؤية واضحة تهدف إلى بناء جسر بين تطوير الكوادر البشرية المؤهلة وتصدير منتجات ذات قيمة مضافة عالية تُنافس في الأسواق العالمية.
+          </p>
+          <p>
+            نؤمن بأن الاستثمار في الإنسان هو أساس كل نجاح، لذلك نقدّم برامج تدريبية متخصصة تواكب متطلبات السوق المحلي والعالمي، مع التزامنا بأعلى معايير الجودة في كل ما نصدّره.
+          </p>
+          <div class="about-values">
+            <div class="value-item"><div class="value-dot"></div>الجودة والإتقان</div>
+            <div class="value-item"><div class="value-dot"></div>الابتكار المستمر</div>
+            <div class="value-item"><div class="value-dot"></div>الشراكة والثقة</div>
+            <div class="value-item"><div class="value-dot"></div>المسؤولية المجتمعية</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINING -->
+  <section class="section" id="training">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-tag">خدماتنا التدريبية</div>
+        <h2 class="section-title">نُعد كفاءات تقود المستقبل</h2>
+        <p class="section-subtitle">برامج تدريبية شاملة مصمّمة بعناية لتلبية احتياجات سوق العمل المتطور وبناء قادة الغد.</p>
+      </div>
+      <div class="training-grid">
+        <div class="training-card reveal">
+          <div class="training-icon bg1">📊</div>
+          <h4>التدريب الإداري والقيادي</h4>
+          <p>برامج متقدمة في إدارة المشاريع، القيادة الاستراتيجية، وتطوير مهارات اتخاذ القرار لبناء قيادات فاعلة ومؤثرة.</p>
+        </div>
+        <div class="training-card reveal">
+          <div class="training-icon bg2">💻</div>
+          <h4>التدريب التقني والرقمي</h4>
+          <p>دورات متخصصة في التحول الرقمي، تطوير البرمجيات، تحليل البيانات، والذكاء الاصطناعي بأحدث المنهجيات العالمية.</p>
+        </div>
+        <div class="training-card reveal">
+          <div class="training-icon bg3">🏭</div>
+          <h4>التدريب المهني والحرفي</h4>
+          <p>تأهيل الكوادر في المجالات الصناعية والحرفية وفق معايير دولية معتمدة مع شهادات معترف بها.</p>
+        </div>
+        <div class="training-card reveal">
+          <div class="training-icon bg2">🌐</div>
+          <h4>اللغات والتواصل</h4>
+          <p>برامج لغوية متكاملة تشمل الإنجليزية للأعمال والتواصل المهني لتعزيز فرص العمل محلياً ودولياً.</p>
+        </div>
+        <div class="training-card reveal">
+          <div class="training-icon bg1">📋</div>
+          <h4>إدارة الجودة والسلامة</h4>
+          <p>تدريب احترافي على أنظمة الأيزو، إدارة الجودة الشاملة، والسلامة المهنية وفق أحدث المعايير.</p>
+        </div>
+        <div class="training-card reveal">
+          <div class="training-icon bg3">🤝</div>
+          <h4>ريادة الأعمال</h4>
+          <p>حاضنات تدريبية لرواد الأعمال تشمل إعداد خطط العمل، دراسات الجدوى، والتسويق الرقمي.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section" id="products">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-tag">منتجاتنا التصديرية</div>
+        <h2 class="section-title">منتجات عربية بمعايير عالمية</h2>
+        <p class="section-subtitle">نفخر بتصدير منتجات عالية الجودة إلى الأسواق الدولية، تعكس أصالة الصناعة العربية وتميّزها.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card reveal">
+          <div class="product-thumb pt1">🏗️</div>
+          <div class="product-info">
+            <h4>المواد الصناعية والهندسية</h4>
+            <p>مواد بناء ومكونات صناعية مطابقة للمواصفات العالمية، تُصدَّر إلى أسواق الخليج وأفريقيا وأوروبا.</p>
+            <span class="product-tag">تصدير نشط</span>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-thumb pt2">🌿</div>
+          <div class="product-info">
+            <h4>المنتجات الزراعية والغذائية</h4>
+            <p>منتجات زراعية طازجة ومصنّعة تتميز بالجودة العالية والالتزام بمعايير السلامة الغذائية الدولية.</p>
+            <span class="product-tag">جودة معتمدة</span>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-thumb pt3">🧶</div>
+          <div class="product-info">
+            <h4>المنسوجات والملابس</h4>
+            <p>خطوط إنتاج متنوعة من المنسوجات والملابس الجاهزة بتصاميم عصرية وخامات ممتازة.</p>
+            <span class="product-tag">تصاميم مبتكرة</span>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-thumb pt4">✨</div>
+          <div class="product-info">
+            <h4>الحرف اليدوية والتراثية</h4>
+            <p>إبداعات يدوية تحمل عبق التراث العربي، من الفخار والنحاس إلى المشغولات الزخرفية الفاخرة.</p>
+            <span class="product-tag">تراث أصيل</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="section" id="partners">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-tag">شركاؤنا وعملاؤنا</div>
+        <h2 class="section-title">ثقة تمتد عبر الحدود</h2>
+        <p class="section-subtitle">نفخر بشراكاتنا مع مؤسسات رائدة محلياً ودولياً</p>
+      </div>
+      <div class="partners-row reveal">
+        <div class="partner-logo">مجموعة الحكمة</div>
+        <div class="partner-logo">شركة المسار</div>
+        <div class="partner-logo">مؤسسة البناء</div>
+        <div class="partner-logo">دار الكفاءة</div>
+        <div class="partner-logo">صندوق التنمية</div>
+      </div>
+      <div class="testimonial-cards">
+        <div class="testimonial reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>تجربة تدريبية استثنائية غيّرت مسار فريقنا بالكامل. الاحترافية والمنهجية المتبعة فاقت توقعاتنا.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar a1">م.أ</div>
+            <div>
+              <div class="testimonial-name">م. أحمد الراشد</div>
+              <div class="testimonial-role">مدير الموارد البشرية - مجموعة الحكمة</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>جودة المنتجات المصدّرة ممتازة والتزام تام بمواعيد التسليم. شريك تجاري يُعتمد عليه بكل ثقة.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar a2">س.ع</div>
+            <div>
+              <div class="testimonial-name">سارة العمري</div>
+              <div class="testimonial-role">مديرة المشتريات - شركة المسار</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>البرنامج التدريبي في ريادة الأعمال كان نقطة التحول لمشروعي. محتوى عملي ومدربون على أعلى مستوى.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar a3">خ.م</div>
+            <div>
+              <div class="testimonial-name">خالد المنصور</div>
+              <div class="testimonial-role">رائد أعمال</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-tag">تواصل معنا</div>
+        <h2 class="section-title">نسعد بتواصلكم</h2>
+        <p class="section-subtitle">سواء كنت تبحث عن برنامج تدريبي أو شراكة تصديرية، فريقنا جاهز لخدمتكم.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-form reveal">
+          <div class="form-row">
+            <div class="form-group">
+              <label>الاسم الكامل</label>
+              <input type="text" placeholder="أدخل اسمك" />
+            </div>
+            <div class="form-group">
+              <label>البريد الإلكتروني</label>
+              <input type="email" placeholder="example@email.com" dir="ltr" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>رقم الهاتف</label>
+            <input type="tel" placeholder="+966 5XX XXX XXXX" dir="ltr" />
+          </div>
+          <div class="form-group">
+            <label>الموضوع</label>
+            <input type="text" placeholder="موضوع الرسالة" />
+          </div>
+          <div class="form-group">
+            <label>الرسالة</label>
+            <textarea placeholder="اكتب رسالتك هنا..."></textarea>
+          </div>
+          <button class="btn-submit">إرسال الرسالة</button>
+        </div>
+        <div class="contact-info reveal">
+          <div class="contact-info-card">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <h4>العنوان</h4>
+              <p>المنطقة الصناعية، المبنى الرئيسي<br/>جمهورية مصر العربية</p>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon">📞</div>
+            <div class="contact-detail">
+              <h4>الهاتف</h4>
+              <p dir="ltr" style="text-align:right">+966 XX XXX XXXX</p>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-detail">
+              <h4>البريد الإلكتروني</h4>
+              <p dir="ltr" style="text-align:right">info@rawad-alkafaat.com</p>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-detail">
+              <h4>ساعات العمل</h4>
+              <p>الأحد - الخميس: ٨ صباحاً - ٥ مساءً</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo"></div>
+        <span class="footer-name">رواد الكفاءات</span>
+      </div>
+      <div class="footer-links">
+        <a href="#about">من نحن</a>
+        <a href="#training">التدريب</a>
+        <a href="#products">التصدير</a>
+        <a href="#contact">تواصل معنا</a>
+      </div>
+      <div class="footer-copy">© ٢٠٢٦ رواد الكفاءات. جميع الحقوق محفوظة.</div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── NAV SCROLL EFFECT ───
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ─── TAB NAVIGATION ───
+    const allNavLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id], .hero[id]');
+
+    allNavLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = link.getAttribute('data-target');
+        const el = document.getElementById(target);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          // Close mobile nav
+          mobileNav.classList.remove('open');
+        }
+      });
+    });
+
+    // Active tab on scroll
+    const observerOptions = { rootMargin: '-20% 0px -60% 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          allNavLinks.forEach(l => {
+            l.classList.toggle('active', l.getAttribute('data-target') === id);
+          });
+        }
+      });
+    }, observerOptions);
+    sections.forEach(s => observer.observe(s));
+
+    // ─── MOBILE NAV ───
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileClose = document.getElementById('mobileClose');
+
+    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+
+    // ─── REVEAL ON SCROLL ───
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
